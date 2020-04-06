@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>Image Extraction</title>
+    <style>
+        #div_form {
+            text-align: center;
+        }
+        img{
+            margin: 0;
+            padding: 20px;
+            background-color: lightgrey;
+            border: 1px black solid;
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+        }
+    </style>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="div_form">
+        <h1>画像抽出</h1>
+        <p><%- msg %></p>
+        <form action="/Image-Extraction" method="GET">
+            <input type="url" name="url" size="80" placeholder="ここにURLを入力">
+            <input type="submit" value="開始">
+            <br/>
+            最小サイズ 横:<input type="tel" name="minWidth" size="4" maxlength="4" pattern="\d*" value="500">
+                      &nbsp;x&nbsp;
+                      縦:<input type="tel" name="minHeight" size="4" maxlength="4" pattern="\d*" value="500">
+            <br/>
+            <input type="checkbox" name="containsGif">gif画像も含める
+        </form>
+    </div>
+    <div id="div_main"><%- imgTags %></div>
+    <script>
+        document.getElementsByName('url')[0].value='https://www.hinatazaka46.com/s/official/diary/detail/33222?ima=0000&cd=member';
+    </script>
+</body>
+</html>
